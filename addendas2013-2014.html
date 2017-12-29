@@ -1,0 +1,98 @@
+<!doctype html>
+<html ng-app="myApp">
+
+<head>
+	<title>Addendas</title>
+	<meta charset="utf-8">
+	<meta name="theme-color" content="#222222" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width">
+	<meta name="description" content="VIRTUAL IT DEPT.">
+	<meta name="author" content="Daniel G. Cosenza">
+	<link rel="stylesheet" href="https://bootswatch.com/yeti/bootstrap.css">
+		<link rel="icon" 
+      type="image/png" 
+      href="favicon.ico">
+	<style>
+		body {
+			padding-top: 0px;
+			/* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+		}
+		
+		.hero-spacer {
+			margin-top: 20px;
+		}
+		
+		.hero-feature {
+			margin-bottom: 30px;
+		}
+		
+		footer {
+			margin: 50px 0;
+		}
+		
+		thead > tr {
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+
+<nav id="navbar" class="navbar navbar-default" role="navigation">
+</nav>
+
+	<div>
+		<div ng-controller="ProdsCtrl" class="container" ng-cloak>
+
+				<p>Cantidad Total: {{total_metabuscador}}
+				<p><label>Filtro de Datos: <input ng-model="searchText" ng-change="updateFilteredList()" capitalize></label></p>
+				<table at-table at-list="filteredList" at-paginated class="table" at-config="config">
+					<thead></thead>
+					<tbody>
+						<tr ng-class="{'warning': item.vv == '06 - FALTA DOCUMENTACIÓN', 'danger': item.vv == '07 - CERRADO', 'info': item.vv == '04 - ENTREGADO A ANSES'}">
+							<td at-attribute="aa" at-title="FECHA DE SOLICITUD DE LA INTERVENCION" at-sortable>{{item.aa}}</td>
+							<td at-attribute="bb" at-title="CARGADO POR" at-sortable>{{item.bb}}</td>
+							<td at-attribute="cc" at-title="APELLIDO, NOMBRE" at-sortable>{{item.cc}}</td>
+							<td at-attribute="dd" at-title="NRO. CUIL" at-sortable at-initial-sorting="asc">{{item.dd}}</td>
+							<td at-attribute="ee" at-title="ESTADO DE NEGATIVA" at-sortable>{{item.ee}}</td>
+							<td at-attribute="ff" at-title="TELEFONO CELULAR" at-sortable>{{item.ff}}</td>
+							<td at-attribute="gg" at-title="TELEFONO FIJO" at-sortable>{{item.gg}}</td>
+							<td at-attribute="hh" at-title="TELEFONO ALTERNATIVO" at-sortable>{{item.hh}}</td>
+							<td at-attribute="ii" at-title="DOMICILIO" at-sortable>{{item.ii}}</td>
+							<td at-attribute="jj" at-title="BARRIO" at-sortable>{{item.jj}}</td>
+							<td at-attribute="kk" at-title="LOCALIDAD" at-sortable>{{item.kk}}</td>
+							<td at-attribute="ll" at-title="CANTIDAD DE NINOS A CARGO" at-sortable>{{item.ll}}</td>
+							<td at-attribute="mm" at-title="DATOS DE LOS NIÑOS" at-sortable>{{item.mm}}</td>
+							<td at-attribute="nn" at-title="DESCRIPCION & OBSERVACIONES" at-sortable>{{item.nn}}</td>
+							<td at-attribute="oo" at-title="PROFESIONAL INTERVINIENTE" at-sortable>{{item.oo}}</td>
+							<td at-attribute="pp" at-title="FECHA DE LA VISITA" at-sortable>{{item.pp}}</td></td>
+							<td at-attribute="qq" at-title="FECHA DE ENTREGO A ANSES" at-sortable>{{item.qq}}</td>
+							<td at-attribute="rr" at-title="UDAI A LA CUAL SE ENTREGO" at-sortable>{{item.rr}}</td>
+							<td at-attribute="ss" at-title="QUIEN ENTREGO A LA UDAI" at-sortable>{{item.ss}}</td>
+							<td at-attribute="tt" at-title="FECHA DE COBRO" at-sortable>{{item.tt}}</td>
+							<td at-attribute="uu" at-title="LUGAR DE COBRO" at-sortable>{{item.uu}}</td>
+							<td at-attribute="vv" at-title="ESTADO" at-sortable>{{item.vv}}</td>
+							<td at-attribute="ww" at-title="LLAMAR POR:" at-sortable>{{item.ww}}</td>
+							<td at-attribute="xx" at-title="REGISTRO DE LLAMADOS" at-sortable>{{item.xx}}</td>
+							<td at-attribute="yy" at-title="MISC." at-sortable>{{item.yy}}</td>
+
+						</tr>
+					</tbody>
+				</table>
+				<at-pagination at-list="filteredList" at-config="config"></at-pagination>
+		</div>
+	</div>
+	
+	<script>var sourceUrl = "./addendas2013-2014.json";</script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.29/angular.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<script src="./js/angular-table.min.js"></script>
+	<script src="./js/appmetabuscador.js"></script>
+	<script>
+		$("#navbar").load("./templates/navbaraddendas2013-2014.html");
+	</script>
+	<!--<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');ga('create', 'UA-84072213-2', 'auto');ga('send', 'pageview');</script>-->
+</body>
+
+</html>
